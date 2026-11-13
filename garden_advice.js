@@ -2,32 +2,37 @@
 let season = prompt("Enter the season:"); // TODO: Replace with prompt() to allow user interaction.
 let plantType = prompt("Enter the plant type:"); // TODO: Replace with prompt() to allow user interaction.
 
-// Variable to hold gardening advice
-let advice = "";
+// Store advice for different seasons
+let seasonalAdvice = {
+    summer: "Water your plants regularly and provide some shade.",
+    winter: "Protect your plants from frost with covers."
+};
 
-// Determine advice based on the season
-if (season === "summer") {
-    advice += "Water your plants regularly and provide some shade.\n";
-} else if (season === "winter") {
-    advice += "Protect your plants from frost with covers.\n";
-} else {
-    advice += "No advice for this season.\n";
+// Store advice for different plant types
+let plantAdvice = {
+    flower: "Use fertiliser to encourage blooms.",
+    vegetable: "Keep an eye out for pests!"
+};
+
+// Gets advice based on the season
+function getSeasonalAdvice(season) {
+    return seasonalAdvice[season] || "No advice for this season.";
 }
 
-// Determine advice based on the plant type
-if (plantType === "flower") {
-    advice += "Use fertiliser to encourage blooms.";
-} else if (plantType === "vegetable") {
-    advice += "Keep an eye out for pests!";
-} else {
-    advice += "No advice for this type of plant.";
+// Gets advice based on the plant type
+function getPlantAdvice(plantType) {
+    return plantAdvice[plantType] || "No advice for this type of plant.";
 }
 
 // Log the generated advice to the console
-console.log(advice);
+function displayAdvice() {
+    let seasonalAdviceText = getSeasonalAdvice(season);
+    let plantAdviceText = getPlantAdvice(plantType);
+    let combinedAdvice = seasonalAdviceText + "\n" + plantAdviceText;
 
-// TODO: Examples of possible features to add:
-// - Add detailed comments explaining each block of code.
-// - Refactor the code into functions for better readability and modularity.
-// - Store advice in an object for multiple plants and seasons.
-// - Suggest plants that thrive in the given season.
+    console.log(combinedAdvice);
+}
+
+// Displays combined advice.
+displayAdvice();
+
